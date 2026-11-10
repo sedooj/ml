@@ -1,0 +1,8 @@
+$ curl -s -o /dev/stdout -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' -d '{"texts": ["Hey, are we still meeting for lunch tomorrow?"]}'
+{"predictions":[0],"labels":["ham"],"spam_probability":[0.0008],"model_version":"1","latency_ms":3.956}
+HTTP 200
+[rc=0]
+$ curl -s -o /dev/stdout -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' -d '{"texts": ["WINNER!! You have won a FREE trip. Call 09061701461 now to claim, T&C apply"]}'
+{"predictions":[1],"labels":["spam"],"spam_probability":[0.9935],"model_version":"1","latency_ms":1.603}
+HTTP 200
+[rc=0]

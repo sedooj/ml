@@ -1,0 +1,53 @@
+$ curl -sf http://127.0.0.1:8000/health
+{"status":"ok","model_version":"1"}
+[rc=0]
+$ docker inspect mlops_lab-api-1 --format '{{json .State.Health}}' | python -m json.tool | head -30
+{
+    "Status": "healthy",
+    "FailingStreak": 0,
+    "Log": [
+        {
+            "Start": "2026-11-10T08:40:20.702694882Z",
+            "End": "2026-11-10T08:40:20.796752465Z",
+            "ExitCode": 0,
+            "Output": ""
+        },
+        {
+            "Start": "2026-11-10T08:40:30.80278972Z",
+            "End": "2026-11-10T08:40:30.888493553Z",
+            "ExitCode": 0,
+            "Output": ""
+        }
+    ]
+}
+[rc=0]
+$ IMAGE_TAG=compose-demo docker compose logs --tail 15
+api-1  | INFO:     Started server process [1]
+api-1  | INFO:     Waiting for application startup.
+api-1  | INFO:     Application startup complete.
+api-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+api-1  | INFO:     127.0.0.1:52292 - "GET /health HTTP/1.1" 200 OK
+api-1  | INFO:     127.0.0.1:43274 - "GET /health HTTP/1.1" 200 OK
+api-1  | INFO:     172.20.0.1:59080 - "GET /health HTTP/1.1" 200 OK
+[rc=0]
+$ IMAGE_TAG=compose-demo docker compose stats --no-stream
+CONTAINER ID   NAME              CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O   PIDS
+4badb26e5fe2   mlops_lab-api-1   4.86%     147.8MiB / 7.654GiB   1.89%     2.22kB / 540B   0B / 0B     16
+[rc=0]
+$ python src/check_api.py
+PASS: container predictions match exported model {'predictions': [0, 0, 1, 1], 'labels': ['ham', 'ham', 'spam', 'spam'], 'spam_probability': [0.0028, 0.0008, 0.9991, 1.0], 'model_version': '1', 'latency_ms': 6.885}
+[rc=0]
+$ IMAGE_TAG=compose-demo docker compose down
+ Container mlops_lab-api-1  Stopping
+ Container mlops_lab-api-1  Stopped
+ Container mlops_lab-api-1  Removing
+ Container mlops_lab-api-1  Removed
+ Network mlops_lab_default  Removing
+ Network mlops_lab_default  Removed
+[rc=0]
+$ docker image ls sms-spam-api
+IMAGE                       ID             DISK USAGE   CONTENT SIZE   EXTRA
+sms-spam-api:compose-demo   99a891a30797        931MB             0B        
+sms-spam-api:v1             73fe3b5bac15        931MB             0B        
+sms-spam-api:v2             a6d8a73b408e        932MB             0B        
+[rc=0]

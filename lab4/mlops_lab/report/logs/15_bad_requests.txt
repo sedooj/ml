@@ -1,0 +1,28 @@
+$ curl -s -o /dev/stdout -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' -d '{"texts": []}'
+{"detail":[{"type":"too_short","loc":["body","texts"],"msg":"List should have at least 1 item after validation, not 0","input":[],"ctx":{"field_type":"List","min_length":1,"actual_length":0}}]}
+HTTP 422
+[rc=0]
+$ curl -s -o /dev/stdout -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' -d '{"text": ["hello"]}'
+{"detail":[{"type":"missing","loc":["body","texts"],"msg":"Field required","input":{"text":["hello"]}},{"type":"extra_forbidden","loc":["body","text"],"msg":"Extra inputs are not permitted","input":["hello"]}]}
+HTTP 422
+[rc=0]
+$ curl -s -o /dev/stdout -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' -d '{"texts": ["   "]}'
+{"detail":[{"type":"string_too_short","loc":["body","texts",0],"msg":"String should have at least 1 character","input":"   ","ctx":{"min_length":1}}]}
+HTTP 422
+[rc=0]
+$ curl -s -o /dev/stdout -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' -d '{"texts": ["Call now!"], "debug": true}'
+{"detail":[{"type":"extra_forbidden","loc":["body","debug"],"msg":"Extra inputs are not permitted","input":true}]}
+HTTP 422
+[rc=0]
+$ curl -s -o /dev/stdout -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' -d '{"texts": [123]}'
+{"detail":[{"type":"string_type","loc":["body","texts",0],"msg":"Input should be a valid string","input":123}]}
+HTTP 422
+[rc=0]
+$ curl -s -o /dev/stdout -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' -d '{"texts": "WINNER! Claim your prize"}'
+{"detail":[{"type":"list_type","loc":["body","texts"],"msg":"Input should be a valid list","input":"WINNER! Claim your prize"}]}
+HTTP 422
+[rc=0]
+$ curl -s -o /dev/stdout -w '\nHTTP %{http_code}\n' -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' -d 'not a json'
+{"detail":[{"type":"json_invalid","loc":["body",0],"msg":"JSON decode error","input":{},"ctx":{"error":"Expecting value"}}]}
+HTTP 422
+[rc=0]

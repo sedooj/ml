@@ -1,0 +1,33 @@
+$ for i in {1..10}; do curl -s -o /tmp/r.json -w "curl_total_s=%{time_total}  " -X POST http://127.0.0.1:8000/predict -H 'Content-Type: application/json' --data-binary @sample_request.json; python -c "import json; print('handler latency_ms =', json.load(open('/tmp/r.json'))['latency_ms'])"; done
+curl_total_s=0.008319  handler latency_ms = 3.78
+curl_total_s=0.008489  handler latency_ms = 3.777
+curl_total_s=0.005490  handler latency_ms = 2.074
+curl_total_s=0.008872  handler latency_ms = 2.157
+curl_total_s=0.007771  handler latency_ms = 1.633
+curl_total_s=0.008200  handler latency_ms = 3.688
+curl_total_s=0.008447  handler latency_ms = 1.909
+curl_total_s=0.008443  handler latency_ms = 3.154
+curl_total_s=0.011645  handler latency_ms = 4.948
+curl_total_s=0.007801  handler latency_ms = 3.421
+[rc=0]
+$ docker logs --tail 12 sms-spam-api
+INFO:     172.17.0.1:57942 - "POST /predict HTTP/1.1" 200 OK
+INFO:     172.17.0.1:57958 - "POST /predict HTTP/1.1" 200 OK
+INFO:     172.17.0.1:57974 - "POST /predict HTTP/1.1" 200 OK
+INFO:     172.17.0.1:57980 - "POST /predict HTTP/1.1" 200 OK
+INFO:     172.17.0.1:57996 - "POST /predict HTTP/1.1" 200 OK
+INFO:     172.17.0.1:58010 - "POST /predict HTTP/1.1" 200 OK
+INFO:     prediction model_version=1 rows=4 latency_ms=1.633
+INFO:     prediction model_version=1 rows=4 latency_ms=3.688
+INFO:     prediction model_version=1 rows=4 latency_ms=1.909
+INFO:     prediction model_version=1 rows=4 latency_ms=3.154
+INFO:     prediction model_version=1 rows=4 latency_ms=4.948
+INFO:     prediction model_version=1 rows=4 latency_ms=3.421
+[rc=0]
+$ docker stats --no-stream sms-spam-api
+CONTAINER ID   NAME           CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O   PIDS
+feb42066a5fe   sms-spam-api   0.32%     148.5MiB / 7.654GiB   1.89%     36.5kB / 24.2kB   0B / 0B     16
+[rc=0]
+$ docker inspect sms-spam-api --format '{{.Config.Image}}'
+sms-spam-api:v1
+[rc=0]

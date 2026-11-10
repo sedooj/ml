@@ -1,0 +1,19 @@
+{
+  "model_version": "1",
+  "n_test": 1035,
+  "test_f1_spam": 0.92,
+  "test_precision_spam": 0.9663865546218487,
+  "test_recall_spam": 0.8778625954198473,
+  "test_accuracy": 0.9806763285024155,
+  "test_f1_macro": 0.9545054945054945,
+  "confusion_matrix": [
+    [
+      900,
+      4
+    ],
+    [
+      16,
+      115
+    ]
+  ]
+}

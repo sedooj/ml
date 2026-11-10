@@ -1,0 +1,25 @@
+$ ls -la data/raw
+total 952
+drwxr-xr-x@ 4 sedooj  staff     128 Nov 10 15:22 .
+drwxr-xr-x@ 4 sedooj  staff     128 Nov 10 15:24 ..
+-rw-r--r--@ 1 sedooj  staff  477907 Mar 15  2011 SMSSpamCollection
+-rw-r--r--@ 1 sedooj  staff    5868 Apr 18  2011 readme
+[rc=0]
+$ wc -l data/raw/SMSSpamCollection; head -n 3 data/raw/SMSSpamCollection
+    5574 data/raw/SMSSpamCollection
+ham	Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...
+ham	Ok lar... Joking wif u oni...
+spam	Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&C's apply 08452810075over18's
+[rc=0]
+$ cut -f1 data/raw/SMSSpamCollection | sort | uniq -c
+4827 ham
+ 747 spam
+[rc=0]
+$ shasum -a 256 data/raw/SMSSpamCollection
+7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d  data/raw/SMSSpamCollection
+[rc=0]
+$ python -c "import sys; sys.path.insert(0,'src'); from data import *; r=load_raw(); c=load_clean(); s=split(c); print('raw:', r.shape, 'after dedup:', c.shape); print('train/val/test:', [len(x) for x in s[:3]]); print('spam share train/val/test:', [round(float(y.mean()),4) for y in s[3:]])"
+raw: (5574, 2) after dedup: (5171, 3)
+train/val/test: [3102, 1034, 1035]
+spam share train/val/test: [0.1264, 0.1257, 0.1266]
+[rc=0]

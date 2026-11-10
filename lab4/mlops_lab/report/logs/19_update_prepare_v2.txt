@@ -1,0 +1,90 @@
+$ curl -sf http://127.0.0.1:8000/metadata
+{"name":"sms-spam-classifier","version":"1","run_id":"b87df52abe4d4ae383c31463f5f0b15a","algorithm":"nb","params":{"alpha":"0.1","ngram_range":"(1, 1)"},"input":{"field":"texts","type":"list[str]","min_items":1,"max_items":100,"max_chars":1000},"classes":["ham","spam"],"positive_class":"spam","dataset_sha256":"7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d"}
+[rc=0]
+$ python src/promote.py --version 2
+champion -> version 2, run 1ca9d22a76144f1fa10bad1c3dfbe708
+[rc=0]
+$ python src/export_model.py
+{
+  "name": "sms-spam-classifier",
+  "version": "2",
+  "run_id": "1ca9d22a76144f1fa10bad1c3dfbe708",
+  "algorithm": "lr",
+  "params": {
+    "C": "10.0",
+    "ngram_range": "(1, 2)",
+    "class_weight": "balanced"
+  },
+  "input": {
+    "field": "texts",
+    "type": "list[str]",
+    "min_items": 1,
+    "max_items": 100,
+    "max_chars": 1000
+  },
+  "classes": [
+    "ham",
+    "spam"
+  ],
+  "positive_class": "spam",
+  "dataset_sha256": "7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d"
+}
+[rc=0]
+$ cat expected_predictions.json
+[0, 0, 1, 1]
+[rc=0]
+$ docker build -t sms-spam-api:v2 .
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 379B done
+#1 DONE 0.0s
+
+#2 [auth] library/python:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 2.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 172B done
+#4 DONE 0.0s
+
+#5 [1/7] FROM docker.io/library/python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 1.07MB 0.0s done
+#6 DONE 0.0s
+
+#7 [3/7] COPY requirements.txt .
+#7 CACHED
+
+#8 [4/7] RUN pip install --no-cache-dir -r requirements.txt
+#8 CACHED
+
+#9 [2/7] WORKDIR /app
+#9 CACHED
+
+#10 [5/7] COPY src/app.py /app/app.py
+#10 CACHED
+
+#11 [6/7] COPY exported_model /app/exported_model
+#11 DONE 0.0s
+
+#12 [7/7] RUN useradd --create-home appuser
+#12 DONE 0.1s
+
+#13 exporting to image
+#13 exporting layers 0.0s done
+#13 writing image sha256:a6d8a73b408e3f1dff911a3a5ed86ffed9bc4a27113157c0d9f4e073c6038cb8 done
+#13 naming to docker.io/library/sms-spam-api:v2 done
+#13 DONE 0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/sk686vi958zhcjn0dzmz7a3zo
+[rc=0]
+$ docker image ls sms-spam-api
+IMAGE             ID             DISK USAGE   CONTENT SIZE   EXTRA
+sms-spam-api:v1   73fe3b5bac15        931MB             0B        
+sms-spam-api:v2   a6d8a73b408e        932MB             0B        
+[rc=0]

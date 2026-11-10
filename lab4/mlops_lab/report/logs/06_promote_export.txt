@@ -1,0 +1,39 @@
+$ python src/promote.py --version 1
+champion -> version 1, run b87df52abe4d4ae383c31463f5f0b15a
+[rc=0]
+$ python src/export_model.py
+{
+  "name": "sms-spam-classifier",
+  "version": "1",
+  "run_id": "b87df52abe4d4ae383c31463f5f0b15a",
+  "algorithm": "nb",
+  "params": {
+    "alpha": "0.1",
+    "ngram_range": "(1, 1)"
+  },
+  "input": {
+    "field": "texts",
+    "type": "list[str]",
+    "min_items": 1,
+    "max_items": 100,
+    "max_chars": 1000
+  },
+  "classes": [
+    "ham",
+    "spam"
+  ],
+  "positive_class": "spam",
+  "dataset_sha256": "7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d"
+}
+[rc=0]
+$ ls -la exported_model
+total 712
+drwxr-xr-x@  8 sedooj  staff     256 Nov 10 15:30 .
+drwxr-xr-x@ 17 sedooj  staff     544 Nov 10 15:30 ..
+-rw-r--r--@  1 sedooj  staff     495 Nov 10 15:30 MLmodel
+-rw-r--r--@  1 sedooj  staff     255 Nov 10 15:30 conda.yaml
+-rw-r--r--@  1 sedooj  staff     476 Nov 10 15:30 metadata.json
+-rw-r--r--@  1 sedooj  staff  340579 Nov 10 15:30 model.pkl
+-rw-r--r--@  1 sedooj  staff     105 Nov 10 15:30 python_env.yaml
+-rw-r--r--@  1 sedooj  staff     131 Nov 10 15:30 requirements.txt
+[rc=0]

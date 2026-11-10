@@ -1,0 +1,42 @@
+$ python src/evaluate.py
+{
+  "model_version": "1",
+  "n_test": 1035,
+  "test_f1_spam": 0.92,
+  "test_precision_spam": 0.9663865546218487,
+  "test_recall_spam": 0.8778625954198473,
+  "test_accuracy": 0.9806763285024155,
+  "test_f1_macro": 0.9545054945054945,
+  "confusion_matrix": [
+    [
+      900,
+      4
+    ],
+    [
+      16,
+      115
+    ]
+  ]
+}
+              precision    recall  f1-score   support
+
+         ham     0.9825    0.9956    0.9890       904
+        spam     0.9664    0.8779    0.9200       131
+
+    accuracy                         0.9807      1035
+   macro avg     0.9745    0.9367    0.9545      1035
+weighted avg     0.9805    0.9807    0.9803      1035
+[rc=0]
+$ cat sample_request.json
+{
+  "texts": [
+    "Aight, I should be there by 8 at the latest, probably closer to 7. Are jay and tyler down or should we just do two trips?",
+    "Its ok my arm is feeling weak cuz i got a shot so we can go another time",
+    "Todays Vodafone numbers ending with 4882 are selected to a receive a £350 award. If your number matches call 09064019014 to receive your £350 award.",
+    "Urgent! Please call 09061743810 from landline. Your ABTA complimentary 4* Tenerife Holiday or #5000 cash await collection SAE T&Cs Box 326 CW25WX 150 ppm"
+  ]
+}
+[rc=0]
+$ cat expected_predictions.json
+[0, 0, 1, 1]
+[rc=0]

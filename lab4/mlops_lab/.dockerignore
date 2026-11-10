@@ -1,0 +1,13 @@
+.venv
+.git
+__pycache__
+mlflow-data
+mlartifacts
+mlflow.db
+screenshots
+data
+report
+*.zip
+*.ipynb
+.DS_Store
+mlruns

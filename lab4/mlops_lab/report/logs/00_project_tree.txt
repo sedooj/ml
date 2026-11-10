@@ -1,0 +1,62 @@
+$ find . -path ./.venv -prune -o -path ./mlflow-data/artifacts -prune -o -path ./screenshots -prune -o -path ./report -prune -o -name __pycache__ -prune -o -print | sort
+.
+./.dockerignore
+./Dockerfile
+./compose.yaml
+./data
+./data/raw
+./data/raw/SMSSpamCollection
+./data/raw/readme
+./expected_predictions.json
+./exported_model
+./exported_model/MLmodel
+./exported_model/conda.yaml
+./exported_model/metadata.json
+./exported_model/model.pkl
+./exported_model/python_env.yaml
+./exported_model/requirements.txt
+./mlflow-data
+./mlflow-data/mlflow.db
+./requirements.lock.txt
+./requirements.txt
+./sample_request.json
+./src
+./src/app.py
+./src/check_api.py
+./src/data.py
+./src/evaluate.py
+./src/export_model.py
+./src/promote.py
+./src/train.py
+./test_metrics.json
+[rc=0]
+$ cat .dockerignore Dockerfile
+.venv
+.git
+__pycache__
+mlflow-data
+mlartifacts
+mlflow.db
+screenshots
+data
+report
+*.zip
+*.ipynb
+.DS_Store
+mlruns
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY src/app.py /app/app.py
+COPY exported_model /app/exported_model
+RUN useradd --create-home appuser
+USER appuser
+EXPOSE 8000
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+[rc=0]
+$ du -sh mlflow-data mlflow-data/artifacts mlflow-data/mlflow.db
+7.7M	mlflow-data
+7.2M	mlflow-data/artifacts
+504K	mlflow-data/mlflow.db
+[rc=0]

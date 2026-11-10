@@ -1,0 +1,23 @@
+{
+  "name": "sms-spam-classifier",
+  "version": "1",
+  "run_id": "b87df52abe4d4ae383c31463f5f0b15a",
+  "algorithm": "nb",
+  "params": {
+    "alpha": "0.1",
+    "ngram_range": "(1, 1)"
+  },
+  "input": {
+    "field": "texts",
+    "type": "list[str]",
+    "min_items": 1,
+    "max_items": 100,
+    "max_chars": 1000
+  },
+  "classes": [
+    "ham",
+    "spam"
+  ],
+  "positive_class": "spam",
+  "dataset_sha256": "7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d"
+}

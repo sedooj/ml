@@ -1,0 +1,31 @@
+$ sw_vers; uname -m
+ProductName:		macOS
+ProductVersion:		26.2
+BuildVersion:		25C56
+arm64
+[rc=0]
+$ python --version; which python
+Python 3.12.10
+/Users/sedooj/Downloads/ml/lab4/mlops_lab/.venv/bin/python
+[rc=0]
+$ docker version --format "Client {{.Client.Version}} / Server {{.Server.Version}}"; docker compose version
+Client 29.9.2 / Server 27.4.0
+Docker Compose version v2.31.0-desktop.2
+[rc=0]
+$ python -m pip check
+No broken requirements found.
+[rc=0]
+$ python -c "import sys, mlflow, sklearn; print(sys.version); print(mlflow.__version__, sklearn.__version__)"
+3.12.10 (v3.12.10:0cc81280367, Apr  8 2025, 08:46:59) [Clang 13.0.0 (clang-1300.0.29.30)]
+3.5.0 1.7.2
+[rc=0]
+$ cat requirements.txt
+mlflow==3.5.0
+scikit-learn==1.7.2
+pandas==2.3.3
+numpy==2.2.6
+matplotlib==3.10.7
+fastapi==0.119.0
+uvicorn==0.37.0
+sqlalchemy==2.0.44
+[rc=0]
