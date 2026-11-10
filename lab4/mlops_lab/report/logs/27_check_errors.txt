@@ -1,0 +1,23 @@
+$ docker run -d --name sms-spam-api -p 127.0.0.1:8000:8000 sms-spam-api:v1
+64d29e853a4a0985a48f6020c2044ba9f6743a0872056dd8bc68ec408968b3c3
+[rc=0]
+$ python src/check_errors.py
+PASS  422  пустой пакет           too_short
+PASS  422  нет поля texts         missing, extra_forbidden
+PASS  422  строка из пробелов     string_too_short
+PASS  422  лишнее поле            extra_forbidden
+PASS  422  число вместо строки    string_type
+PASS  422  строка вместо списка   list_type
+PASS  422  101 сообщение          too_long
+PASS  422  строка длиннее 1000    string_too_long
+PASS  422  некорректный JSON      json_invalid
+PASS  200  корректный запрос      ['ham']
+10/10 checks passed
+[rc=0]
+$ python src/check_api.py
+PASS: container predictions match exported model {'predictions': [0, 0, 1, 1], 'labels': ['ham', 'ham', 'spam', 'spam'], 'spam_probability': [0.0028, 0.0008, 0.9991, 1.0], 'model_version': '1', 'latency_ms': 1.616}
+[rc=0]
+$ docker stop sms-spam-api && docker rm sms-spam-api
+sms-spam-api
+sms-spam-api
+[rc=0]

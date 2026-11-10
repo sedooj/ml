@@ -33,7 +33,8 @@ python src/promote.py --version 1
 python src/export_model.py && python src/evaluate.py
 docker build -t sms-spam-api:v1 .
 docker run -d --name sms-spam-api -p 127.0.0.1:8000:8000 sms-spam-api:v1
-python src/check_api.py
+python src/check_api.py      # ответы контейнера == ответы экспортированной модели
+python src/check_errors.py   # 9 видов некорректных запросов -> 422, корректный -> 200
 ```
 Обновление и откат: `promote.py --version 2` → `export_model.py` → `docker build -t sms-spam-api:v2 .` → перезапуск контейнера на v2;
 откат: перезапуск на `sms-spam-api:v1`, `promote.py --version 1`, `export_model.py`.
