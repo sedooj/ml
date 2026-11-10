@@ -12,9 +12,20 @@ flavors:
     pickled_model: model.pkl
     serialization_format: cloudpickle
     sklearn_version: 1.7.2
+is_signature_from_type_hint: false
 mlflow_version: 3.5.0
 model_id: null
-model_size_bytes: 340579
-model_uuid: 0cf398fedfc942a0b1bd2e0911cd00e1
+model_size_bytes: 341132
+model_uuid: 70d5532e79bc4967b85f4b0571fea251
 prompts: null
-utc_time_created: '2026-11-10 08:40:00.482524'
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "string", "name": "text", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-11-10 11:01:40.161779'

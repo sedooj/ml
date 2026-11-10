@@ -27,13 +27,48 @@ $ python src/export_model.py
 }
 [rc=0]
 $ ls -la exported_model
-total 712
-drwxr-xr-x@  8 sedooj  staff     256 Nov 10 15:30 .
-drwxr-xr-x@ 17 sedooj  staff     544 Nov 10 15:30 ..
--rw-r--r--@  1 sedooj  staff     495 Nov 10 15:30 MLmodel
--rw-r--r--@  1 sedooj  staff     255 Nov 10 15:30 conda.yaml
--rw-r--r--@  1 sedooj  staff     476 Nov 10 15:30 metadata.json
--rw-r--r--@  1 sedooj  staff  340579 Nov 10 15:30 model.pkl
--rw-r--r--@  1 sedooj  staff     105 Nov 10 15:30 python_env.yaml
--rw-r--r--@  1 sedooj  staff     131 Nov 10 15:30 requirements.txt
+total 728
+drwxr-xr-x@ 10 sedooj  staff     320 Nov 10 17:56 .
+drwxr-xr-x@ 23 sedooj  staff     736 Nov 10 17:56 ..
+-rw-r--r--@  1 sedooj  staff     889 Nov 10 17:56 MLmodel
+-rw-r--r--@  1 sedooj  staff     255 Nov 10 17:56 conda.yaml
+-rw-r--r--@  1 sedooj  staff     227 Nov 10 17:56 input_example.json
+-rw-r--r--@  1 sedooj  staff     476 Nov 10 17:56 metadata.json
+-rw-r--r--@  1 sedooj  staff  340579 Nov 10 17:56 model.pkl
+-rw-r--r--@  1 sedooj  staff     105 Nov 10 17:56 python_env.yaml
+-rw-r--r--@  1 sedooj  staff     131 Nov 10 17:56 requirements.txt
+-rw-r--r--@  1 sedooj  staff     326 Nov 10 17:56 serving_input_example.json
+[rc=0]
+$ cat exported_model/MLmodel
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.10
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+is_signature_from_type_hint: false
+mlflow_version: 3.5.0
+model_id: null
+model_size_bytes: 341132
+model_uuid: 9ce4f2f54e84445794282eb802634579
+prompts: null
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "string", "name": "text", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-11-10 10:56:24.699545'
 [rc=0]

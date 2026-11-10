@@ -5,11 +5,11 @@ $ docker rm sms-spam-api
 sms-spam-api
 [rc=0]
 $ docker run -d --name sms-spam-api -p 127.0.0.1:8000:8000 sms-spam-api:v2
-cb31f52cd27010649cd7efed1b32e6198c20917e9662fffeb348aac755e4fc9e
+d3b35653c07a3011554d48c729399be78729f0caf05f2a9f3b7df8cb12eab070
 [rc=0]
 $ curl -sf http://127.0.0.1:8000/metadata
 {"name":"sms-spam-classifier","version":"2","run_id":"1ca9d22a76144f1fa10bad1c3dfbe708","algorithm":"lr","params":{"C":"10.0","ngram_range":"(1, 2)","class_weight":"balanced"},"input":{"field":"texts","type":"list[str]","min_items":1,"max_items":100,"max_chars":1000},"classes":["ham","spam"],"positive_class":"spam","dataset_sha256":"7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d"}
 [rc=0]
 $ python src/check_api.py
-PASS: container predictions match exported model {'predictions': [0, 0, 1, 1], 'labels': ['ham', 'ham', 'spam', 'spam'], 'spam_probability': [0.0606, 0.003, 0.9672, 0.9904], 'model_version': '2', 'latency_ms': 4.053}
+PASS: container predictions match exported model {'predictions': [0, 0, 1, 1], 'labels': ['ham', 'ham', 'spam', 'spam'], 'spam_probability': [0.0606, 0.003, 0.9672, 0.9904], 'model_version': '2', 'latency_ms': 2.72}
 [rc=0]

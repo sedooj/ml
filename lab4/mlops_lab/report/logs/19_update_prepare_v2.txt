@@ -44,10 +44,10 @@ $ docker build -t sms-spam-api:v2 .
 #2 DONE 0.0s
 
 #3 [internal] load metadata for docker.io/library/python:3.12-slim
-#3 DONE 2.0s
+#3 DONE 2.2s
 
 #4 [internal] load .dockerignore
-#4 transferring context: 172B done
+#4 transferring context: 189B done
 #4 DONE 0.0s
 
 #5 [1/7] FROM docker.io/library/python:3.12-slim@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
@@ -57,10 +57,10 @@ $ docker build -t sms-spam-api:v2 .
 #6 transferring context: 1.07MB 0.0s done
 #6 DONE 0.0s
 
-#7 [3/7] COPY requirements.txt .
+#7 [4/7] RUN pip install --no-cache-dir -r requirements.txt
 #7 CACHED
 
-#8 [4/7] RUN pip install --no-cache-dir -r requirements.txt
+#8 [3/7] COPY requirements.txt .
 #8 CACHED
 
 #9 [2/7] WORKDIR /app
@@ -77,14 +77,14 @@ $ docker build -t sms-spam-api:v2 .
 
 #13 exporting to image
 #13 exporting layers 0.0s done
-#13 writing image sha256:a6d8a73b408e3f1dff911a3a5ed86ffed9bc4a27113157c0d9f4e073c6038cb8 done
+#13 writing image sha256:f6257bffbc0c72644cbbac56dee74bd2f562175583cf0ebaaf6b884600fe8053 done
 #13 naming to docker.io/library/sms-spam-api:v2 done
 #13 DONE 0.0s
 
-View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/sk686vi958zhcjn0dzmz7a3zo
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/r5bs1pxhwm7leqsoa510kaakv
 [rc=0]
 $ docker image ls sms-spam-api
 IMAGE             ID             DISK USAGE   CONTENT SIZE   EXTRA
-sms-spam-api:v1   73fe3b5bac15        931MB             0B        
-sms-spam-api:v2   a6d8a73b408e        932MB             0B        
+sms-spam-api:v1   a66327e74617        931MB             0B        
+sms-spam-api:v2   f6257bffbc0c        932MB             0B        
 [rc=0]

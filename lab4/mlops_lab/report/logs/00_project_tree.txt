@@ -1,7 +1,9 @@
-$ find . -path ./.venv -prune -o -path ./mlflow-data/artifacts -prune -o -path ./screenshots -prune -o -path ./report -prune -o -name __pycache__ -prune -o -print | sort
+$ find . -path ./.venv -prune -o -path ./mlflow-data/artifacts -prune -o -path ./screenshots -prune -o -path ./report -prune -o -name __pycache__ -prune -o -name '*.ipynb' -prune -o -name '*.docx' -prune -o -name .DS_Store -prune -o -print | sort
 .
 ./.dockerignore
+./.gitignore
 ./Dockerfile
+./README.md
 ./compose.yaml
 ./data
 ./data/raw
@@ -11,10 +13,12 @@ $ find . -path ./.venv -prune -o -path ./mlflow-data/artifacts -prune -o -path .
 ./exported_model
 ./exported_model/MLmodel
 ./exported_model/conda.yaml
+./exported_model/input_example.json
 ./exported_model/metadata.json
 ./exported_model/model.pkl
 ./exported_model/python_env.yaml
 ./exported_model/requirements.txt
+./exported_model/serving_input_example.json
 ./mlflow-data
 ./mlflow-data/mlflow.db
 ./requirements.lock.txt
@@ -22,6 +26,7 @@ $ find . -path ./.venv -prune -o -path ./mlflow-data/artifacts -prune -o -path .
 ./sample_request.json
 ./src
 ./src/app.py
+./src/bench_api.py
 ./src/check_api.py
 ./src/data.py
 ./src/evaluate.py
@@ -44,6 +49,7 @@ report
 *.ipynb
 .DS_Store
 mlruns
+*.docx
 FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .

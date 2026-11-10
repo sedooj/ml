@@ -5,7 +5,7 @@ $ docker rm sms-spam-api
 sms-spam-api
 [rc=0]
 $ docker run -d --name sms-spam-api -p 127.0.0.1:8000:8000 sms-spam-api:v1
-888a22692fe59e023a96b69e0362ab90637cbafdd3b0083426a4e6f925bd014e
+0282be9c36f366bd15cf95f20c537cc13e3f9ecf4819eebfdc4484fe35153fd0
 [rc=0]
 $ python src/promote.py --version 1
 champion -> version 1, run b87df52abe4d4ae383c31463f5f0b15a
@@ -20,8 +20,8 @@ $ python src/export_model.py
   "run_id": "b87df52abe4d4ae383c31463f5f0b15a",
 [rc=0]
 $ python src/check_api.py
-PASS: container predictions match exported model {'predictions': [0, 0, 1, 1], 'labels': ['ham', 'ham', 'spam', 'spam'], 'spam_probability': [0.0028, 0.0008, 0.9991, 1.0], 'model_version': '1', 'latency_ms': 4.319}
+PASS: container predictions match exported model {'predictions': [0, 0, 1, 1], 'labels': ['ham', 'ham', 'spam', 'spam'], 'spam_probability': [0.0028, 0.0008, 0.9991, 1.0], 'model_version': '1', 'latency_ms': 5.243}
 [rc=0]
 $ docker inspect sms-spam-api --format '{{.Config.Image}} {{.Image}}'
-sms-spam-api:v1 sha256:73fe3b5bac15278da5dc253147794668d10148aaca870682fdfbb989245efd0f
+sms-spam-api:v1 sha256:a66327e74617e47fa4fc13c348756f75604975e154796f56a5fac380c97e40dc
 [rc=0]

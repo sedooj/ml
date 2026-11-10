@@ -11,3 +11,4 @@ report
 *.ipynb
 .DS_Store
 mlruns
+*.docx
