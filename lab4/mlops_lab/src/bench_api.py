@@ -1,4 +1,3 @@
-"""Замер времени ответа API для пакетов разного размера (реальные test-SMS)."""
 import json
 import statistics
 import sys
@@ -7,7 +6,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from data import TEXT_COL, split  # noqa: E402
+from data import TEXT_COL, split
 
 URL = 'http://127.0.0.1:8000/predict'
 REPEATS = 50

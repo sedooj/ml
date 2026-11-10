@@ -13,12 +13,10 @@ SHA-256: `7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d`.
 ## Воспроизведение (macOS/Linux, Python 3.12, Docker)
 ```bash
 python3.12 -m venv .venv && source .venv/bin/activate
-python -m pip install -r requirements.txt        # или requirements.lock.txt для полного снимка
+python -m pip install -r requirements.txt
 mkdir -p mlflow-data/artifacts
-# терминал A
 mlflow server --backend-store-uri sqlite:///mlflow-data/mlflow.db \
   --artifacts-destination ./mlflow-data/artifacts --serve-artifacts --host 127.0.0.1 --port 5000
-# терминал B
 export MLFLOW_TRACKING_URI=http://127.0.0.1:5000
 python src/train.py --algorithm nb --alpha 1.0 --ngram-max 1
 python src/train.py --algorithm nb --alpha 0.1 --ngram-max 1
@@ -27,14 +25,14 @@ python src/train.py --algorithm lr --c 1   --ngram-max 1
 python src/train.py --algorithm lr --c 10  --ngram-max 1
 python src/train.py --algorithm lr --c 100 --ngram-max 2
 python src/train.py --algorithm lr --c 10  --ngram-max 2 --class-weight balanced
-python src/train.py --algorithm nb --alpha 0.1 --ngram-max 1 --register                       # версия 1
-python src/train.py --algorithm lr --c 10 --ngram-max 2 --class-weight balanced --register    # версия 2
+python src/train.py --algorithm nb --alpha 0.1 --ngram-max 1 --register
+python src/train.py --algorithm lr --c 10 --ngram-max 2 --class-weight balanced --register
 python src/promote.py --version 1
 python src/export_model.py && python src/evaluate.py
 docker build -t sms-spam-api:v1 .
 docker run -d --name sms-spam-api -p 127.0.0.1:8000:8000 sms-spam-api:v1
-python src/check_api.py      # ответы контейнера == ответы экспортированной модели
-python src/check_errors.py   # 9 видов некорректных запросов -> 422, корректный -> 200
+python src/check_api.py
+python src/check_errors.py
 ```
 Обновление и откат: `promote.py --version 2` → `export_model.py` → `docker build -t sms-spam-api:v2 .` → перезапуск контейнера на v2;
 откат: перезапуск на `sms-spam-api:v1`, `promote.py --version 1`, `export_model.py`.

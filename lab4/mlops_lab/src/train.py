@@ -34,12 +34,11 @@ mlflow.set_tracking_uri(os.getenv('MLFLOW_TRACKING_URI', 'http://127.0.0.1:5000'
 mlflow.set_experiment('lab4-sms-spam')
 
 df = load_clean()
-Xtrain, Xval, Xtest, ytrain, yval, ytest = split(df)  # test в этом скрипте НЕ используется
+Xtrain, Xval, Xtest, ytrain, yval, ytest = split(df)
 
 clf = (MultinomialNB(alpha=a.alpha) if a.algorithm == 'nb' else
        LogisticRegression(C=a.c, max_iter=2000, random_state=SEED,
                           class_weight=None if a.class_weight == 'none' else 'balanced'))
-# TF-IDF обучается только на train внутри Pipeline и сохраняется вместе с классификатором.
 model = Pipeline([
     ('features', ColumnTransformer([('tfidf', TfidfVectorizer(lowercase=True, ngram_range=(1, a.ngram_max),
                                                               sublinear_tf=True), TEXT_COL)])),
