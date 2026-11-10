@@ -1,0 +1,842 @@
+{
+ "raw_counts": {
+  "ham": 4827,
+  "spam": 747
+ },
+ "dup_counts": {
+  "ham": 309,
+  "spam": 94
+ },
+ "clean_counts": {
+  "ham": 4518,
+  "spam": 653
+ },
+ "stats": {
+  "ham": {
+   "len_mean": 70.8949,
+   "len_median": 53.0,
+   "len_max": 910,
+   "len_min": 2,
+   "words_mean": 14.2333,
+   "digits_mean": 0.2966,
+   "upper_share": 0.0767,
+   "url": 0.0002,
+   "phone": 0.0007,
+   "currency": 0.0042
+  },
+  "spam": {
+   "len_mean": 137.7106,
+   "len_median": 148.0,
+   "len_max": 223,
+   "len_min": 13,
+   "words_mean": 23.7397,
+   "digits_mean": 15.4885,
+   "upper_share": 0.1659,
+   "url": 0.1394,
+   "phone": 0.7672,
+   "currency": 0.3323
+  }
+ },
+ "len_overall_max": 910,
+ "top_tokens": {
+  "ham": [
+   [
+    "you",
+    1880
+   ],
+   [
+    "to",
+    1481
+   ],
+   [
+    "the",
+    1062
+   ],
+   [
+    "and",
+    826
+   ],
+   [
+    "in",
+    762
+   ],
+   [
+    "me",
+    732
+   ],
+   [
+    "my",
+    679
+   ],
+   [
+    "it",
+    664
+   ],
+   [
+    "is",
+    656
+   ],
+   [
+    "that",
+    546
+   ],
+   [
+    "for",
+    481
+   ],
+   [
+    "of",
+    479
+   ],
+   [
+    "have",
+    426
+   ],
+   [
+    "so",
+    421
+   ],
+   [
+    "can",
+    421
+   ],
+   [
+    "but",
+    420
+   ],
+   [
+    "are",
+    398
+   ],
+   [
+    "not",
+    393
+   ],
+   [
+    "your",
+    381
+   ],
+   [
+    "on",
+    372
+   ],
+   [
+    "at",
+    362
+   ],
+   [
+    "do",
+    350
+   ],
+   [
+    "we",
+    344
+   ],
+   [
+    "be",
+    327
+   ],
+   [
+    "if",
+    321
+   ]
+  ],
+  "spam": [
+   [
+    "to",
+    599
+   ],
+   [
+    "call",
+    309
+   ],
+   [
+    "you",
+    268
+   ],
+   [
+    "your",
+    242
+   ],
+   [
+    "free",
+    195
+   ],
+   [
+    "for",
+    185
+   ],
+   [
+    "the",
+    183
+   ],
+   [
+    "now",
+    164
+   ],
+   [
+    "or",
+    157
+   ],
+   [
+    "is",
+    144
+   ],
+   [
+    "txt",
+    134
+   ],
+   [
+    "on",
+    122
+   ],
+   [
+    "from",
+    122
+   ],
+   [
+    "ur",
+    119
+   ],
+   [
+    "have",
+    115
+   ],
+   [
+    "stop",
+    111
+   ],
+   [
+    "mobile",
+    109
+   ],
+   [
+    "text",
+    108
+   ],
+   [
+    "and",
+    104
+   ],
+   [
+    "claim",
+    96
+   ],
+   [
+    "reply",
+    96
+   ],
+   [
+    "with",
+    94
+   ],
+   [
+    "www",
+    83
+   ],
+   [
+    "this",
+    83
+   ],
+   [
+    "prize",
+    82
+   ]
+  ]
+ },
+ "split": {
+  "train": [
+   3102,
+   392
+  ],
+  "val": [
+   1034,
+   130
+  ],
+  "test": [
+   1035,
+   131
+  ]
+ },
+ "nb_top_spam": [
+  [
+   "claim",
+   6.015
+  ],
+  [
+   "prize",
+   5.889
+  ],
+  [
+   "www",
+   5.645
+  ],
+  [
+   "150p",
+   5.498
+  ],
+  [
+   "guaranteed",
+   5.344
+  ],
+  [
+   "nokia",
+   5.274
+  ],
+  [
+   "18",
+   5.272
+  ],
+  [
+   "1000",
+   5.27
+  ],
+  [
+   "co",
+   5.27
+  ],
+  [
+   "cs",
+   5.167
+  ],
+  [
+   "000",
+   5.09
+  ],
+  [
+   "tone",
+   5.089
+  ],
+  [
+   "500",
+   5.086
+  ],
+  [
+   "ringtone",
+   5.019
+  ],
+  [
+   "attempt",
+   5.012
+  ],
+  [
+   "awarded",
+   5.012
+  ],
+  [
+   "150ppm",
+   4.962
+  ],
+  [
+   "landline",
+   4.855
+  ],
+  [
+   "collection",
+   4.825
+  ],
+  [
+   "750",
+   4.82
+  ]
+ ],
+ "nb_top_ham": [
+  [
+   "gt",
+   -4.424
+  ],
+  [
+   "lt",
+   -4.423
+  ],
+  [
+   "lor",
+   -4.216
+  ],
+  [
+   "home",
+   -4.175
+  ],
+  [
+   "da",
+   -4.122
+  ],
+  [
+   "he",
+   -4.115
+  ],
+  [
+   "later",
+   -3.814
+  ],
+  [
+   "she",
+   -3.812
+  ],
+  [
+   "doing",
+   -3.706
+  ],
+  [
+   "lol",
+   -3.697
+  ],
+  [
+   "too",
+   -3.69
+  ],
+  [
+   "anything",
+   -3.631
+  ],
+  [
+   "ok",
+   -3.539
+  ],
+  [
+   "work",
+   -3.534
+  ],
+  [
+   "already",
+   -3.533
+  ],
+  [
+   "ask",
+   -3.519
+  ],
+  [
+   "come",
+   -3.516
+  ],
+  [
+   "really",
+   -3.45
+  ],
+  [
+   "sure",
+   -3.39
+  ],
+  [
+   "something",
+   -3.373
+  ]
+ ],
+ "test_fn": [
+  [
+   "Babe: U want me dont u baby! Im nasty and have a thing 4 filthyguys. Fancy a rude time with a sexy bitch. How about we go slo n hard! Txt XXX SLO(4msgs)",
+   0.0032022182162028063
+  ],
+  [
+   "In The Simpsons Movie released in July 2007 name the band that died at the start of the film? A-Green Day, B-Blue Day, C-Red Day. (Send A, B or C)",
+   0.013006435189083601
+  ],
+  [
+   "Hi its LUCY Hubby at meetins all day Fri & I will B alone at hotel U fancy cumin over? Pls leave msg 2day 09099726395 Lucy x Calls£1/minMobsmoreLKPOBOX177HP51FL",
+   0.02094075013917875
+  ],
+  [
+   "Would you like to see my XXX pics they are so hot they were nearly banned in the uk!",
+   0.03168726006819354
+  ],
+  [
+   "Hi if ur lookin 4 saucy daytime fun wiv busty married woman Am free all next week Chat now 2 sort time 09099726429 JANINExx Calls£1/minMobsmoreLKPOBOX177HP51FL",
+   0.06348049696853615
+  ],
+  [
+   "Latest News! Police station toilet stolen, cops have nothing to go on!",
+   0.12626982325898717
+  ],
+  [
+   "Xmas & New Years Eve tickets are now on sale from the club, during the day from 10am till 8pm, and on Thurs, Fri & Sat night this week. They're selling fast!",
+   0.13465180034761637
+  ],
+  [
+   "Missed call alert. These numbers called but left no message. 07008009200",
+   0.1394259847362571
+  ],
+  [
+   "Check Out Choose Your Babe Videos @ sms.shsex.netUN fgkslpoPW fgkslpo",
+   0.15212342124083753
+  ],
+  [
+   "SMS. ac sun0819 posts HELLO:\"You seem cool, wanted to say hi. HI!!!\" Stop? Send STOP to 62468",
+   0.1784529821441746
+  ],
+  [
+   "Hi babe its Jordan, how r u? Im home from abroad and lonely, text me back if u wanna chat xxSP visionsms.com Text stop to stopCost 150p 08712400603",
+   0.19365897062583634
+  ],
+  [
+   "Burger King - Wanna play footy at a top stadium? Get 2 Burger King before 1st Sept and go Large or Super with Coca-Cola and walk out a winner",
+   0.20902318064280145
+  ],
+  [
+   "Ever thought about living a good life with a perfect partner? Just txt back NAME and AGE to join the mobile community. (100p/SMS)",
+   0.21973970969986506
+  ],
+  [
+   "Thanks for the Vote. Now sing along with the stars with Karaoke on your mobile. For a FREE link just reply with SING now.",
+   0.33061702928730496
+  ],
+  [
+   "ASKED 3MOBILE IF 0870 CHATLINES INCLU IN FREE MINS. INDIA CUST SERVs SED YES. L8ER GOT MEGA BILL. 3 DONT GIV A SHIT. BAILIFF DUE IN DAYS. I O £250 3 WANT £800",
+   0.3832044832089883
+  ],
+  [
+   "FreeMsg Hey U, i just got 1 of these video/pic fones, reply WILD to this txt & ill send U my pics, hurry up Im so bored at work xxx (18 150p/rcvd STOP2stop)",
+   0.4433351548810006
+  ]
+ ],
+ "test_fp": [
+  [
+   "Nokia phone is lovly..",
+   0.8861220917369049
+  ],
+  [
+   "Have you laid your airtel line to rest?",
+   0.5998592463400896
+  ],
+  [
+   "Unlimited texts. Limited minutes.",
+   0.5326598182260031
+  ],
+  [
+   "K:)eng rocking in ashes:)",
+   0.5181040695109649
+  ]
+ ],
+ "lr_top_spam": [
+  [
+   "call",
+   8.954
+  ],
+  [
+   "txt",
+   8.045
+  ],
+  [
+   "free",
+   7.625
+  ],
+  [
+   "text",
+   7.28
+  ],
+  [
+   "reply",
+   6.121
+  ],
+  [
+   "uk",
+   5.969
+  ],
+  [
+   "mobile",
+   5.824
+  ],
+  [
+   "www",
+   5.709
+  ],
+  [
+   "to",
+   5.415
+  ],
+  [
+   "claim",
+   5.245
+  ],
+  [
+   "stop",
+   5.191
+  ],
+  [
+   "com",
+   5.105
+  ],
+  [
+   "150p",
+   4.712
+  ],
+  [
+   "service",
+   4.701
+  ],
+  [
+   "146tf150p",
+   4.566
+  ],
+  [
+   "your",
+   4.457
+  ],
+  [
+   "50",
+   4.426
+  ],
+  [
+   "or",
+   4.383
+  ],
+  [
+   "you have",
+   4.056
+  ],
+  [
+   "prize",
+   4.033
+  ]
+ ],
+ "lr_top_ham": [
+  [
+   "me",
+   -4.573
+  ],
+  [
+   "my",
+   -4.414
+  ],
+  [
+   "that",
+   -3.144
+  ],
+  [
+   "ok",
+   -3.057
+  ],
+  [
+   "it",
+   -2.996
+  ],
+  [
+   "how",
+   -2.846
+  ],
+  [
+   "gt",
+   -2.521
+  ],
+  [
+   "lt",
+   -2.494
+  ],
+  [
+   "but",
+   -2.475
+  ],
+  [
+   "at",
+   -2.438
+  ],
+  [
+   "got",
+   -2.433
+  ],
+  [
+   "then",
+   -2.409
+  ],
+  [
+   "so",
+   -2.409
+  ],
+  [
+   "call me",
+   -2.384
+  ],
+  [
+   "its",
+   -2.326
+  ],
+  [
+   "come",
+   -2.324
+  ],
+  [
+   "he",
+   -2.313
+  ],
+  [
+   "am",
+   -2.29
+  ],
+  [
+   "can",
+   -2.254
+  ],
+  [
+   "da",
+   -2.224
+  ]
+ ],
+ "per_run": {
+  "696bf8347c1b45c3ab3d59800f982bd0": {
+   "n": 1,
+   "model_id": "m-e4c665910f3945d0a5cb21e34c30d166",
+   "cm_val": [
+    [
+     904,
+     0
+    ],
+    [
+     51,
+     79
+    ]
+   ],
+   "vocab": 6516
+  },
+  "06fd0e667b544b189f4d6ab8abf60849": {
+   "n": 2,
+   "model_id": "m-c87affe6de2841ad8218154c9e57e77d",
+   "cm_val": [
+    [
+     904,
+     0
+    ],
+    [
+     15,
+     115
+    ]
+   ],
+   "vocab": 6516
+  },
+  "51569733f5e144599fd2d213fa9931e7": {
+   "n": 3,
+   "model_id": "m-47cced78760448a3b39e62809e07ff2c",
+   "cm_val": [
+    [
+     904,
+     0
+    ],
+    [
+     15,
+     115
+    ]
+   ],
+   "vocab": 34312
+  },
+  "9fb998ae2d5247908bb38622a04dea52": {
+   "n": 4,
+   "model_id": "m-94d07a20c0bb46d98ee5100ca6bf8e73",
+   "cm_val": [
+    [
+     903,
+     1
+    ],
+    [
+     35,
+     95
+    ]
+   ],
+   "vocab": 6516
+  },
+  "73b4a5f42fc646b5a9a390c227f595e9": {
+   "n": 5,
+   "model_id": "m-d00d46b4323442b78e242320fe9ec0f7",
+   "cm_val": [
+    [
+     903,
+     1
+    ],
+    [
+     17,
+     113
+    ]
+   ],
+   "vocab": 6516
+  },
+  "2cc485391b4846b7be778c90c7b7f64a": {
+   "n": 6,
+   "model_id": "m-caa774988a0b4c089b5fae4f07244c1c",
+   "cm_val": [
+    [
+     898,
+     6
+    ],
+    [
+     14,
+     116
+    ]
+   ],
+   "vocab": 34312
+  },
+  "05e0d5c264374a509d494aa9011f95f9": {
+   "n": 7,
+   "model_id": "m-be8e236caf164df99ca0a10def1f4ccd",
+   "cm_val": [
+    [
+     894,
+     10
+    ],
+    [
+     9,
+     121
+    ]
+   ],
+   "vocab": 34312
+  },
+  "b87df52abe4d4ae383c31463f5f0b15a": {
+   "n": 8,
+   "model_id": "m-81f367269ab6488581b0e42fc4a0be71",
+   "cm_val": [
+    [
+     904,
+     0
+    ],
+    [
+     15,
+     115
+    ]
+   ],
+   "vocab": 6516,
+   "test": {
+    "f1": 0.92,
+    "prec": 0.9663865546218487,
+    "rec": 0.8778625954198473,
+    "acc": 0.9806763285024155,
+    "cm": [
+     [
+      900,
+      4
+     ],
+     [
+      16,
+      115
+     ]
+    ]
+   }
+  },
+  "1ca9d22a76144f1fa10bad1c3dfbe708": {
+   "n": 9,
+   "model_id": "m-08e56b5f32074e4993370d408148b39a",
+   "cm_val": [
+    [
+     894,
+     10
+    ],
+    [
+     9,
+     121
+    ]
+   ],
+   "vocab": 34312,
+   "test": {
+    "f1": 0.918918918918919,
+    "prec": 0.9296875,
+    "rec": 0.9083969465648855,
+    "acc": 0.9797101449275363,
+    "cm": [
+     [
+      895,
+      9
+     ],
+     [
+      12,
+      119
+     ]
+    ]
+   }
+  }
+ }
+}

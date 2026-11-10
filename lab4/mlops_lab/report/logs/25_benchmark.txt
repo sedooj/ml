@@ -1,0 +1,13 @@
+$ docker run -d --name sms-spam-api -p 127.0.0.1:8000:8000 sms-spam-api:v1
+004f242090dc6d95374dbbbd86888132f1aaac658517e9c853f4f69b32e410fa
+[rc=0]
+$ python src/bench_api.py
+{'batch': 1, 'handler_median_ms': 1.598, 'handler_p95_ms': 2.222, 'client_median_ms': 3.8, 'client_p95_ms': 5.247, 'per_message_ms': 3.8}
+{'batch': 10, 'handler_median_ms': 1.808, 'handler_p95_ms': 2.441, 'client_median_ms': 4.337, 'client_p95_ms': 5.581, 'per_message_ms': 0.434}
+{'batch': 50, 'handler_median_ms': 2.111, 'handler_p95_ms': 2.703, 'client_median_ms': 4.495, 'client_p95_ms': 5.801, 'per_message_ms': 0.09}
+{'batch': 100, 'handler_median_ms': 2.732, 'handler_p95_ms': 3.319, 'client_median_ms': 5.644, 'client_p95_ms': 7.642, 'per_message_ms': 0.056}
+[rc=0]
+$ docker stats --no-stream sms-spam-api
+CONTAINER ID   NAME           CPU %     MEM USAGE / LIMIT     MEM %     NET I/O         BLOCK I/O   PIDS
+004f242090dc   sms-spam-api   0.27%     149.1MiB / 7.654GiB   1.90%     744kB / 248kB   0B / 0B     16
+[rc=0]
