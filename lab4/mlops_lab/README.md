@@ -1,6 +1,13 @@
 # ЛР4 MLOps — вариант 2: сервис фильтрации SMS-спама
 
-Герасимов С. П., АВТ-313. Отчёт: `ЛР4_Герасимов_АВТ-313.docx` (тот же отчёт в виде ноутбука: `ЛР4_Герасимов_АВТ-313.ipynb`).
+Герасимов С. П., АВТ-313. Отчёт: `ЛР4_Герасимов_АВТ-313.docx`.
+
+| | |
+|---|---|
+| run_id выбранной модели | `b87df52abe4d4ae383c31463f5f0b15a` |
+| Версия в Model Registry | `sms-spam-classifier`, версия 1, alias `champion` |
+| Тег Docker-образа | `sms-spam-api:v1` |
+| ID Docker-образа | `sha256:a66327e74617e47fa4fc13c348756f75604975e154796f56a5fac380c97e40dc` |
 
 Цикл: данные → эксперименты в MLflow → Model Registry (alias `champion`) → экспорт → FastAPI в Docker → обновление и откат → Docker Compose с healthcheck.
 
