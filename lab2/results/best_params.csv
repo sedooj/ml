@@ -1,0 +1,9 @@
+model,best_params,cv_auc,cv_f1
+GaussianNB,{'var_smoothing': 0.1},0.5965052041856264,0.1394155066409586
+MultinomialNB,{'alpha': 0.1},0.5988711256264956,0.0005673758865248227
+ComplementNB,"{'alpha': 0.1, 'norm': False}",0.5988711256264956,0.2782181391111021
+BernoulliNB,"{'alpha': 1.0, 'binarize': 0.1}",0.6007380897257704,0.028942234309120064
+DecisionTree,"{'class_weight': 'balanced', 'criterion': 'gini', 'max_depth': 5, 'min_samples_leaf': 5}",0.6359055872222408,0.3151610385229572
+LDA,{'solver': 'svd'},0.6308188151806827,0.010129918816194598
+kNN,"{'metric': 'manhattan', 'n_neighbors': 321, 'weights': 'distance'}",0.6038449882724878,0.0
+SVM,"{'C': 10, 'class_weight': 'balanced', 'kernel': 'linear'}",0.6328293526663096,0.30132741462389706
